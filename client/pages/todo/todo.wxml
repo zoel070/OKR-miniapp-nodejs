@@ -1,0 +1,10 @@
+<view class="page-container">
+  <view class="todo-tips">JUST DO IT</view>
+  <input type="text" class="todo-input" placeholder="请输入你需要完成的事情" bindinput="handleInput" bindconfirm="handleConfirm" value="{{value}}"/>
+  <view class="todo-list">
+    <view class="todo-item" wx:key="{{item.id}}" wx:for="{{ todos }}" bindtap="handleShowActionSheet" data-id="{{item.id}}">
+      <view class="todo-title">{{item.title}}</view>
+      <view class="todo-created_time">· 创建时间：{{item.created_time}}</view>
+    </view>
+  </view>
+</view>

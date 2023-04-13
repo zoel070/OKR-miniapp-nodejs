@@ -1,0 +1,40 @@
+.page-tips{
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.objective-item {
+  position: relative;
+  background: #178d96;
+  padding: 10px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.objective-title {
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.objective-created_time {
+  font-size: 12px;
+  color: #fff;
+}
+
+.keyresult-item{
+  line-height: 20px;
+  font-size: 14px;
+  padding: 5px;
+  color: #333;
+  margin-bottom: 10px;
+  border: 1px solid #333;
+  color: #666;
+}
+
+.keyresult-item.active{
+  background: rgb(226, 145, 22);
+  color:#fff;
+}

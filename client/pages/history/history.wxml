@@ -1,0 +1,10 @@
+<view class="page-container">
+  <view class="todo-tips">GOOD JOB!</view>
+  <view class="todo-list">
+    <view class="todo-item {{item.status === 1 ? 'finished' : ''}}" wx:key="{{item.id}}" wx:for="{{ todos }}" data-id="{{item.id}}" data-index="{{index}}" bindtap="handleShowActionSheet">
+      <view class="todo-title">{{item.title}}</view>
+      <view class="todo-created_time">· 创建时间：{{item.created_time}}</view>
+      <view class="todo-created_time" wx:if="{{item.finished_time}}">· 完成时间：{{item.finished_time}}</view>
+    </view>
+  </view>
+</view>

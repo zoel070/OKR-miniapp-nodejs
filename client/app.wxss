@@ -1,0 +1,12 @@
+view,text,input,button{
+  box-sizing: border-box;
+}
+
+page{
+  color: #333;
+}
+
+.page-container{
+  min-height: 100vh;
+  padding: 15px;
+}

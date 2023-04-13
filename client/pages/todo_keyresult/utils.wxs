@@ -1,0 +1,9 @@
+// 需要注意:
+// 1.不支持let，const
+// 2.不支持箭头函数
+
+var includes = function (arr, val) {
+  return arr.indexOf(val) !== -1;
+}
+
+module.exports.includes = includes;     //输出模块的includes属性，属性值是includes方法。
