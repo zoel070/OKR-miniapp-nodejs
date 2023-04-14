@@ -27,11 +27,15 @@ class basicModel {
   }
 
   delete(params) {
-    return knex(this.table).where(params).del()
+    return knex(this.table).where(params).del();
   }
 
   update(id, params) {
     return knex(this.table).where('id', '=', id).update(params);
+  }
+
+  whereIn(name, params) {
+    return knex(this.table).whereIn(name, params);
   }
 
 }

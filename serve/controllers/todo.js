@@ -58,7 +58,6 @@ const todoController = {
     let id = req.params.id;
     try {
       await Todo.delete({ id });
-      // await TodoKeyresult.select({ todo_id: id }).del();
       res.json({ error_code: 0, data: '删除成功' })
     } catch (e) {
       res.json({ error_code: 1, message: e.message })

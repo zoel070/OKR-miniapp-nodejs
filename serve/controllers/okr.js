@@ -61,15 +61,10 @@ const okrController = {
         user_id
       })
       let objective_id = objectives[0];
-      keyresults.forEach(async (data) => {
-        let title = data.title;
-        await Keyresult.insert({
-          objective_id,
-          title,
-          status,
-          created_time
-        })
+      let krs = keyresults.map((t) => {
+        return t = { ...t, objective_id, status, created_time }
       })
+      await Keyresult.insert(krs)
       res.json({ error_code: 0, data: '添加成功' })
     } catch (e) {
       res.json({ error_code: 1, message: e.message })

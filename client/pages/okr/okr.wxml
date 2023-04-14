@@ -1,5 +1,5 @@
 <view class="page-container">
-  <navigator  url="/pages/okr_create/okr_create" class="objective-created-btn">添加 OKR</navigator>
+  <navigator url="/pages/okr_create/okr_create" class="objective-created-btn">添加 OKR</navigator>
   <view class="objective-list">
     <view class="objective-item {{item.status === 1 ? 'finished' : ''}}" wx:key="{{item.id}}" wx:for="{{ objectives }}" data-id="{{item.id}}" data-index="{{index}}" data-status="{{item.status}}" bindtap="handleObjectiveActionSheet">
       <view class="objective-title">{{item.title}}</view>
