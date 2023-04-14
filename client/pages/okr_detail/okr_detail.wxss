@@ -108,12 +108,13 @@
 .keyresult-title {
   flex: 1;
   font-size: 14px;
-  color: #666;
+  color: rgba(255, 155, 6, 0.966);
+  font-weight: 600;
 }
 
 .keyresult-tag {
   font-size: 12px;
-  color: #999;
+  color: rgb(8, 8, 8);
   margin-right: 4px;
 }
 
