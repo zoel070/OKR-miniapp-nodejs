@@ -8,12 +8,14 @@ const cors = require('./middlewares/cors');
 var indexRouter = require('./routes/index');
 var apiRouter = require('./routes/api');
 
+//初始化应用程序
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//配置中间件
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors.allowAll);
 
 
+//配置路由
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
 
