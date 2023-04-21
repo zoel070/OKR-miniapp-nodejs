@@ -1,34 +1,31 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Post, Res } from '@nestjs/common';
 import { UserService } from './user.service';
-import { ConfigService } from '@nestjs/config';
-import { User } from './user.entity';
+import * as Joi from 'joi';
+import { Response } from 'express'; //太关键了，每个类型都得有引用来源
 
-@Controller('user')
+@Controller('login')
 export class UserController {
-  constructor(
-    private userService: UserService,
-    private configService: ConfigService,
-  ) {}
-
-  @Get()
-  getUsers(): any {
-    return this.userService.findAll();
-  }
+  constructor(private userService: UserService) {}
 
   @Post()
-  addUser(): any {
-    const user = { username: 'toimc', password: '123456' } as User;
-    return this.userService.create(user);
-  }
-  
-  @Patch()
-  updateUser(): any {
-    const user = { username: 'newname' } as User;
-    return this.userService.update(1, user);
-  }
-
-  @Delete()
-  deleteUser(): any {
-    return this.userService.remove(1);
+  async oAuthMini(@Body() body: any, @Res() res: Response) {
+    const schema = Joi.object({
+      code: Joi.string().required(),
+    });
+    const { error, value } = schema.validate(body);
+    if (error) {
+      throw new Error(error.message);
+    }
+    const { code } = body;
+    try {
+      const wechatUserInfo = await this.userService.oAuthMini(code);
+      const token = await this.userService.token(wechatUserInfo.id);
+      console.log(token, 123);
+      return res.status(200).json({ data: { token } });
+    } catch (e) {
+      return res.status(404).json({
+        message: e.message || e.errors || e.errmsg,
+      });
+    }
   }
 }

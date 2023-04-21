@@ -3,28 +3,36 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   OneToMany,
-  ManyToMany,
-  JoinTable,
+  JoinColumn,
 } from 'typeorm';
-import { Logs } from '../logs/logs.entity';
-import { Roles } from '../roles/roles.entity';
+import { Okr } from 'src/okr/okr.entity';
+import { Todo } from 'src/todo/todo.entity';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  username: string;
+  @Column({ nullable: true })
+  open_id: string;
 
-  @Column()
-  password: string;
+  @Column({ nullable: true })
+  union_id: string;
 
-  // typescript -> 数据库 关联关系 Mapping
-  @OneToMany(() => Logs, (logs) => logs.user)
-  logs: Logs[];
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    comment: '创建时间',
+    nullable: true,
+  })
+  created_time: Date;
 
-  @ManyToMany(() => Roles, (roles) => roles.users)
-  @JoinTable({ name: 'users_roles' })
-  roles: Roles[];
+  //主实体
+  @OneToMany(() => Okr, (okr) => okr.user) //第一个是指定目标实体，第二个是指定目标的字段
+  // @JoinColumn()   //建不出来的
+  okr: Okr[]; //定义自己表中的字段名，关联目标实体的主键id。//虽然在数据库没有创建出字段来，但是不代表字段不存在
+
+  //主实体
+  @OneToMany(() => Todo, (todo) => todo.user)
+  todo: Todo[];
 }

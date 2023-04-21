@@ -6,7 +6,6 @@ async function bootstrap() {
     cors: true,
   });
   app.setGlobalPrefix('api');
-  console.log(123321);
   await app.listen(3000);
   await app.init();
 }
