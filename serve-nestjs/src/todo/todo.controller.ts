@@ -26,8 +26,8 @@ export class TodoController {
     let status = param.status;
     try {
       let user = await this.userService.show(1);
-      let todos = await this.todoService.index(user, status);
-      res.status(200).json({ data: { todos } });
+      let todos = await this.todoService.index(user, +status);
+      res.status(200).json({ data: todos });
     } catch (e) {
       res.status(404).json({
         message: e.message || e.errors || e.errmsg,
@@ -43,9 +43,9 @@ export class TodoController {
     }
     let todo = { title };
     try {
-      // return this.todoService.insert(todo); //不用res，直接return这个promise也是可行的
+      // return this.todoService.insert(todo); //不用res，直接return这个promise也是可行的，但是就不能引用@Res() res: Response了
       let mes = await this.todoService.insert(todo);
-      res.status(200).json({ data: { mes } });
+      res.status(200).json({ data: mes });//status是关键
     } catch (e) {
       res.status(404).json({
         message: e.message || e.errors || e.errmsg,
@@ -54,10 +54,10 @@ export class TodoController {
   }
 
   @Put('/:id')
-  async update(@Param('id') id: any, @Body() body: any) {
+  async update(@Param('id') id: number, @Body() body: any) {
     body.finished_time = Number(body.status) ? new Date() : null;
     let params = body as Partial<Todo>;
-    return this.todoService.update(id, params); //就不能引用@Res() res: Response了
+    return this.todoService.update(id, params);
   }
 
   @Delete('/:id')

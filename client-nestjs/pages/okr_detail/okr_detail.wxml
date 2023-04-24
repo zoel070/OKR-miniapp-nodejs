@@ -1,0 +1,22 @@
+<view class="page-container">
+  <view class="page-content">
+    <view class="objective-item {{okr.status === 1 ? 'finished' : ''}}" hover-class="objective-item--hover" hover-stay-time="200" bindtap="handleObjectiveActionSheet" data-status="{{okr.status}}" data-id="{{okr.id}}">
+      <view class="objective-title">{{okr.title}}</view>
+      <view class="objective-created_time">· 创建时间：{{okr.created_time}}</view>
+      <view class="objective-created_time" wx:if="{{okr.finished_time}}">· 完成时间：{{okr.finished_time}}</view>
+    </view>
+    <view class="keyresult-list" wx:key="{{item.id}}" wx:for="{{ okr.keyresult }}" data-id="{{item.id}}">
+      <view class="keyresult-item {{item.status === 1 ? 'finished' : ''}}" hover-class="keyresult-item--hover" bindtap="handleKeyresultActionSheet" data-id="{{item.id}}" data-index="{{index}}" data-status="{{item.status}}">
+        <view class="keyresult-info">
+          <view class="keyresult-title">{{item.title}}</view>
+          <view class="keyresult-tag">{{item.status ? '已完成' : '点击标记'}}</view>
+        </view>
+        <view class="todos-list" wx:if="{{item.todo.length}}">
+          <view class="todo-item" wx:for="{{ item.todo }}" wx:key="{{todo.id}}" data-id="{{todo.id}}" wx:for-item="todo">
+            <view class="todo-title {{todo.status == 1 ? 'finished' : ''}}">· {{todo.title}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

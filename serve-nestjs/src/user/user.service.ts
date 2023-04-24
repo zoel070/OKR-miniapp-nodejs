@@ -21,11 +21,9 @@ export class UserService {
   async oAuthMini(code: string) {
     //code换openId，然后取出或插入数据
     const sessionInfo = await this.wx.miniProgram.getSession(code);
-    console.log(234, sessionInfo);
     let user = await this.userRepository.findOne({
       where: { open_id: sessionInfo.openid },
     });
-    console.log(345, user);
     if (!user) {
       const newUser = this.userRepository.create({
         open_id: sessionInfo.openid,

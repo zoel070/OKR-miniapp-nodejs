@@ -1,0 +1,23 @@
+<view>
+  <view class="sea-container">
+    <text class="wave"></text>
+    <text class="wave"></text>
+    <text class="wave"></text>
+    <view class="content">
+      <view class="title">目标和关键成果</view>
+      <view class="desc">Objective and Key Result</view>
+      <view class="objective-list">
+        <view class="objective-item">目标：我想让网站打开速度快一些</view>
+        <view class="keyresult-list">
+          <view class="keyresult-item">-- 成果：打开速度快 30%</view>
+          <view class="todo-list">
+            <view class="todo-item">---- todo：替换提及较大的资源库</view>
+            <view class="todo-item">---- todo：JavaScript 代码压缩</view>
+            <view class="todo-item">---- todo：图片资源压缩和代理</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="login-btn" hover-class="login-btn_hover" bindtap="handleLogin">立即体验</button>
+  </view>
+</view>

@@ -36,9 +36,9 @@ export class TodoService {
     return this.todoRepository.save(td);
   }
 
-  async update(id: any, params: Partial<Todo>) {
+  async update(id: number, params: Partial<Todo>) {
     // 级联更新，需要使用save方法或者queryBuilder，可以实现同时修改多个表
-    const todoTemp = await this.findTodo(id);
+    const todoTemp = await this.findTodo(id);//但是这里不使用relations，效果跟update是一样的
     const newTodo = this.todoRepository.merge(todoTemp, params); //将多个实体合并为一个实体
     return this.todoRepository.save(newTodo);
     // 下面的update方法，只适合单模型的更新，不适合有关系的模型更新
@@ -50,9 +50,6 @@ export class TodoService {
       where: {
         id,
       },
-      // relations:{
-      //   keyresult:true
-      // }
     });
   }
 

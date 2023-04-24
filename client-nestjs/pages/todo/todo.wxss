@@ -1,0 +1,38 @@
+.todo-tips {
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 10px;
+  letter-spacing: 2rpx;
+  word-spacing: 10rpx;
+  font-weight: 500;
+}
+
+.todo-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.todo-item {
+  background: #f5e874;
+  padding: 10px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.todo-title {
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.todo-created_time {
+  font-size: 12px;
+  color: #999;
+}

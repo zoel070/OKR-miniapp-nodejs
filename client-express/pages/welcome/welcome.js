@@ -13,6 +13,7 @@ Page({
     wx.login({
       success(res) {
         if (res.code) {
+          console.log(res.code, 4444)
           User.login(res.code).then(res => {
             let token = res.token;
             wx.setStorageSync('token', token);

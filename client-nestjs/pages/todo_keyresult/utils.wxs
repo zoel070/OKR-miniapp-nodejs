@@ -1,0 +1,14 @@
+// 需要注意:
+// 1.不支持let，const
+// 2.不支持箭头函数
+
+var includes = function (arr, val) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].id == val) {
+      return true
+    }
+  }
+  return false
+}
+
+module.exports.includes = includes; //输出模块的includes属性，属性值是includes方法。

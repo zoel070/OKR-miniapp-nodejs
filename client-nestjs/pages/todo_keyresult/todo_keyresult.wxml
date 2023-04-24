@@ -1,0 +1,14 @@
+<wxs module="utils" src="./utils.wxs"></wxs>
+
+<view class="page-container">
+  <view class="page-tips">请选择关键成果 KR （KeyResult） 进行绑定</view>
+  <view class="objective-list">
+    <view class="okr-item" wx:for="{{ okr }}">
+      <view class="objective-item" wx:key="{{item.id}}" data-id="{{item.id}}" data-status="{{item.status}}">
+        <view class="objective-title">{{item.title}}</view>
+        <view class="objective-created_time">· 创建时间：{{item.created_time}}</view>
+      </view>
+      <view class="keyresult-item {{utils.includes(kr.todo, optionId)?'active':''}}" wx:for="{{ item.keyresult }}" wx:for-item="kr" wx:key="{{kr.key}}" bindtap="relaChange" data-active="{{utils.includes(kr.todo, optionId)}}" data-keyresult_id="{{kr.id}}">{{kr.title}}</view>
+    </view>
+  </view>
+</view>

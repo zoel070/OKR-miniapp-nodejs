@@ -26,7 +26,7 @@ Page({
       })
     })
   },
-  
+
   handleAddKeyresult: function () {
     let keyresults = this.data.keyresults;
     keyresults.push({
@@ -97,7 +97,7 @@ Page({
     })
     let rawIds = this.data.rawIds;
     let newIds = keyresults.map(data => data.id);
-    let tmpIds = [];
+    let tmpIds = []; //没有被删除的原todos
     //处理原todos
     for (let i = 0; i < rawIds.length; i++) {
       let num = newIds.indexOf(rawIds[i])

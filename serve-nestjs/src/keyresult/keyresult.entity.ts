@@ -15,7 +15,7 @@ export class Keyresult {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Okr, (okr) => okr.keyresult)
+  @ManyToOne(() => Okr, (okr) => okr.keyresult, { onDelete: 'CASCADE' })
   @JoinColumn()
   okr: Okr;
 

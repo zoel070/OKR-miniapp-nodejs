@@ -20,7 +20,6 @@ export class UserController {
     try {
       const wechatUserInfo = await this.userService.oAuthMini(code);
       const token = await this.userService.token(wechatUserInfo.id);
-      console.log(token, 123);
       return res.status(200).json({ data: { token } });
     } catch (e) {
       return res.status(404).json({
