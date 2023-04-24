@@ -1,6 +1,7 @@
 const { Wechat } = require('wechat-jssdk');  //很关键，集成了微信公众号的各种功能，例如分享、支付、获取用户信息等等
 const wechatConfig = require('../wechatConfig.js')
 const wx = new Wechat(wechatConfig);
+console.log("🚀 ~ file: wechat.js:4 ~ wechatConfig:", wechatConfig)
 const User = require('../models/user.js');
 
 const wechatService = {

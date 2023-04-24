@@ -4,9 +4,9 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { Wechat } from 'wechat-jssdk';
 // import wechatConfig from '../../wechatConfig.js';  //CommonJS模块导出方式不能使用import
+const wechatConfig = require('../../wechatConfig.js');
 import * as JWT from 'jsonwebtoken';
 import { ConfigService } from '@nestjs/config';
-const wechatConfig = require('../../wechatConfig.js');
 
 @Injectable()
 export class UserService {
