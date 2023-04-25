@@ -1,4 +1,4 @@
-const PREFIX = 'http://localhost:3000/api';
+const PREFIX = 'http://localhost:7001/api';
 export default {
   login: PREFIX + '/login',
   todo: PREFIX + '/todo',

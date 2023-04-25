@@ -13,7 +13,6 @@ class WechatController extends Controller {
     });
     try {
       await validator.validate({ code });
-      console.log("🚀 ~ file: wechat.js:15 ~ WechatController ~ oAuthMini ~ code:", code)
       const wechatUserInfo = await ctx.service.wechat.oAuthMini(code);
       const token = await ctx.service.user.token(wechatUserInfo.id);
       ctx.body = { error_code: 0, data: { token } };

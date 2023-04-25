@@ -6,10 +6,9 @@ class WechatService extends Service {
     async oAuthMini(code) {
         try {
             const wx = new Wechat(wechatConfig);
-            console.log("🚀 ~ file: wechat.js:10 ~ WechatService ~ oAuthMini ~ wechatConfig:", wechatConfig)
             const sessionInfo = await wx.miniProgram.getSession(code);
             console.log(234, sessionInfo);
-            const user = await this.app.model.User.findOne({ open_id: sessionInfo.openid });
+            const user = await this.app.model.User.findOne({ open_id: sessionInfo.openid });//识别不到User，问题待解决（）
             console.log(345, user);
             if (!user) {
                 const newUser = await this.app.model.User.create({
